@@ -51,11 +51,15 @@ pub fn notify(item: impl Summary) {
     println!("Срочные новости! {}", item.summarize());
 }
 
-pub fn notify2<T: Summary>(item: T, item2: T) {
-
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
 }
 
-pub fn notify3<T: Summary + Display>(item: T) {
 
-}
 
